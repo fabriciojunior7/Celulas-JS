@@ -2,10 +2,11 @@ function Celula(){
 	
 	//Atribitos
 	this.constate = 2100;
+	this.constateMenor = 20000;
 	this.areaBase = windowWidth*windowHeight;
 	//this.windowWidthBase = windowWidth;
 	//this.windowHeightBase = windowHeight;
-	this.raioMaior = random(50, (area/this.constate));
+	this.raioMaior = random((area/this.constateMenor), (area/this.constate));
 	this.raioMenor = 6;
 	this.x = random(this.raioMenor/2, windowWidth-this.raioMenor/2);
 	this.y = random(this.raioMenor/2, windowHeight-this.raioMenor/2);
