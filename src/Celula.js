@@ -1,7 +1,11 @@
 function Celula(){
 	
 	//Atribitos
-	this.raioMaior = random(50, 500);
+	this.constate = 2100;
+	this.areaBase = windowWidth*windowHeight;
+	//this.windowWidthBase = windowWidth;
+	//this.windowHeightBase = windowHeight;
+	this.raioMaior = random(50, (area/this.constate));
 	this.raioMenor = 6;
 	this.x = random(this.raioMenor/2, windowWidth-this.raioMenor/2);
 	this.y = random(this.raioMenor/2, windowHeight-this.raioMenor/2);
@@ -11,12 +15,15 @@ function Celula(){
 	this.b = random(50, 255);
 
 	//Metodos
-	this.desenhar = function(){
-		//fill(this.r, this.g, this.b, 25);
-		//stroke(this.r, this.g, this.b);
-		//ellipse(this.x, this.y, this.raioMaior, this.raioMaior);
+	this.desenhar = function(debug){
+		if(debug){
+			fill(this.r, this.g, this.b, 20);
+			noStroke();
+			ellipse(this.x, this.y, this.raioMaior, this.raioMaior);
+		}
 		fill(this.r, this.g, this.b);
-		stroke(0);
+		strokeWeight(1);
+		stroke(255);
 		ellipse(this.x, this.y, this.raioMenor, this.raioMenor);
 	}
 
@@ -40,6 +47,20 @@ function Celula(){
 		else{
 			this.y += random(-this.velocidade, this.velocidade);
 		}
+	}
+
+	this.atualizarArea = function(area){
+		var proporcaoRaio = area/this.areaBase;
+		this.raioMaior *= proporcaoRaio;
+		this.areaBase = area;
+
+		//var proporcaoX = windowWidth/this.windowWidthBase;
+		this.x *= proporcaoRaio;
+		//this.windowWidthBase = windowWidth;
+
+		//var proporcaoY = windowHeight/this.windowHeightBase;
+		this.y *= proporcaoRaio;
+		//this.windowHeightBase = windowHeight;
 	}
 
 }
