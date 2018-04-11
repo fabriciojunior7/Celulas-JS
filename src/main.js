@@ -84,7 +84,12 @@ function texto(){
 	fill(255);
 	textSize(30);
 	text(celulas.length, 8, 35);
+	if(debug){
+		fill(100);
+		text(limite, 8, 65);
+	}
 	//Logo
+	fill(255);
 	textSize(12);
 	text("Fabricio Junior", 8, windowHeight-8);
 }
